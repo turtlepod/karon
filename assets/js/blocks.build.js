@@ -73,9 +73,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__example1___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__example1__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__example2__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__example2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__example2__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__example3__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__example3___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__example3__);
 /**
  * Import example blocks
  */
+
 
 
 
@@ -286,6 +289,63 @@ registerBlockType('karon/example2', {
 						}
 					})
 				)
+			)
+		)];
+	},
+	save: function save() {
+		return null;
+	}
+});
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+var __ = wp.i18n.__;
+var registerBlockType = wp.blocks.registerBlockType;
+var _wp$editor = wp.editor,
+    InspectorControls = _wp$editor.InspectorControls,
+    BlockControls = _wp$editor.BlockControls,
+    RichText = _wp$editor.RichText;
+var Fragment = wp.element.Fragment;
+var _wp$components = wp.components,
+    IconButton = _wp$components.IconButton,
+    TextControl = _wp$components.TextControl,
+    TextareaControl = _wp$components.TextareaControl,
+    ServerSideRender = _wp$components.ServerSideRender,
+    PanelBody = _wp$components.PanelBody,
+    PanelRow = _wp$components.PanelRow,
+    RadioControl = _wp$components.RadioControl,
+    SelectControl = _wp$components.SelectControl;
+
+
+registerBlockType('karon/example3', {
+	edit: function edit(props) {
+		return [wp.element.createElement(
+			Fragment,
+			null,
+			props.isSelected ? wp.element.createElement(
+				"div",
+				null,
+				wp.element.createElement(
+					Fragment,
+					null,
+					wp.element.createElement(TextAreaControl, {
+						type: "text",
+						placeholder: "Text",
+						value: props.attributes.textInput,
+						onChange: function onChange(value) {
+							return props.setAttributes({ textInput: value });
+						}
+					})
+				)
+			) : wp.element.createElement(
+				"div",
+				null,
+				wp.element.createElement(ServerSideRender, {
+					block: props.name,
+					attributes: props.attributes
+				})
 			)
 		)];
 	},

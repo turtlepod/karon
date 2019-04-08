@@ -104,5 +104,28 @@ add_action( 'init', function() {
 			return ob_get_clean();
 		},
 	] );
+	register_block_type( 'karon/example3', [
+		'title'       => 'Karon Example #3',
+		'icon'        => 'carrot',
+		'category'    => 'layout',
+		'description' => 'This is description for Example #3',
+		'attributes' => [
+			'textInput' => [
+				'type'    => 'string',
+				'default' => '',
+			],
+		],
+		'render_callback' => function( $attributes = [], $content = '' ) {
+			ob_start();
+			?>
+			<div class="karon-block karon-block3">
+				<p><strong>karon/example3</strong></p>
+				<p>Attr: <?php echo json_encode( array_map( 'esc_attr', $attributes ) ); ?></p>
+				<p>Content: <?php echo json_encode( $content ); ?></p>
+			</div>
+			<?php
+			return ob_get_clean();
+		},
+	] );
 
 } );
