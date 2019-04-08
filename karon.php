@@ -17,7 +17,7 @@ add_action( 'init', function() {
 		wp_enqueue_script(
 			'karon-blocks',
 			URL . 'assets/js/blocks.build.js',
-			['wp-blocks', 'wp-components', 'wp-element', 'wp-editor' ],
+			[ 'wp-blocks', 'wp-components', 'wp-element', 'wp-editor' ],
 			VERSION
 		);
 		wp_enqueue_style(

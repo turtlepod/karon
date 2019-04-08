@@ -327,18 +327,14 @@ registerBlockType('karon/example3', {
 			props.isSelected ? wp.element.createElement(
 				"div",
 				null,
-				wp.element.createElement(
-					Fragment,
-					null,
-					wp.element.createElement(TextAreaControl, {
-						type: "text",
-						placeholder: "Text",
-						value: props.attributes.textInput,
-						onChange: function onChange(value) {
-							return props.setAttributes({ textInput: value });
-						}
-					})
-				)
+				wp.element.createElement(TextareaControl, {
+					type: "text",
+					placeholder: "Text area",
+					value: props.attributes.textInput,
+					onChange: function onChange(value) {
+						return props.setAttributes({ textInput: value });
+					}
+				})
 			) : wp.element.createElement(
 				"div",
 				null,

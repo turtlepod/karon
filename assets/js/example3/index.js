@@ -14,7 +14,7 @@ const {
 } = wp.editor;
 
 const {
-	Fragment
+	Fragment,
 } = wp.element;
 
 const {
@@ -36,14 +36,12 @@ registerBlockType( 'karon/example3', {
 					{ props.isSelected ? (
 
 						<div>
-							<Fragment>
-								<TextAreaControl
-									type="text"
-									placeholder="Text"
-									value={ props.attributes.textInput }
-									onChange={ ( value ) => props.setAttributes( { textInput: value } ) }
-								/>
-							</Fragment>
+							<TextareaControl
+								type="text"
+								placeholder="Text area"
+								value={ props.attributes.textInput }
+								onChange={ ( value ) => props.setAttributes( { textInput: value } ) }
+							/>
 						</div>
 
 					) : (
