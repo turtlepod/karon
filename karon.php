@@ -30,27 +30,7 @@ define( 'KARON_VERSION',  defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? time() : '
  * @since 0.1.0
  */
 function karon_init() {
-	// Register Global Scripts
-	add_action( 'wp_enqueue_scripts', 'karon_scripts' );
-	add_action( 'admin_enqueue_scripts', 'karon_scripts' );
-
 	// Load Blocks.
 	require_once( KARON_PATH . 'blocks/example1.php' );
-	//require_once( KARON_PATH . 'blocks/example2.php' );
-	//require_once( KARON_PATH . 'blocks/example3.php' );
 }
 add_action( 'plugins_loaded', 'karon_init' );
-
-/**
- * Karon Scripts
- *
- * @since 0.1.0
- */
-function karon_scripts() {
-	wp_register_style(
-		'karon',
-		KARON_URL . 'assets/karon.css',
-		[],
-		KARON_VERSION
-	);
-}

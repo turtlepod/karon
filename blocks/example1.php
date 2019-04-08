@@ -3,24 +3,16 @@
  * Block Example #1
 **/
 
-namespace karon\example1;
-
-// Constants.
-define( __NAMESPACE__ . '\VERSION',  KARON_VERSION );
-define( __NAMESPACE__ . '\PLUGIN',   'karon' );
-define( __NAMESPACE__ . '\BLOCK',    'example1' );
-define( __NAMESPACE__ . '\NAME',     PLUGIN . '/' . BLOCK  );
-define( __NAMESPACE__ . '\PATH',     plugin_dir_path( __FILE__ ) . BLOCK . '/' );
-define( __NAMESPACE__ . '\URL',      plugin_dir_url( __FILE__ ) . BLOCK . '/' );
-
 /**
  * Registers block assets.
  */
-function init() {
+function karon_example1_block_init() {
+	$prefix = 'karon-example1';
+
 	// Register Block Editor JS.
 	wp_register_script(
-		PLUGIN . '-' . BLOCK . '-block-editor',
-		URL . 'block.js',
+		"{$prefix}-block-editor",
+		KARON_URL . 'example1/block.js',
 		[
 			'wp-i18n',
 			'wp-blocks',
@@ -28,30 +20,30 @@ function init() {
 			'wp-editor',
 			'wp-element',
 		],
-		VERSION
+		KARON_VERSION
 	);
 
 	// Register Block Editor CSS.
 	wp_register_style(
-		PLUGIN . '-' . BLOCK . '-block-editor',
-		URL . 'editor.css',
-		['karon'],
-		VERSION
+		"{$prefix}-block-editor",
+		KARON_URL . 'example1/editor.css',
+		[],
+		KARON_VERSION
 	);
 
 	// Register Block Style.
 	wp_register_style(
-		PLUGIN . '-' . BLOCK . '-block',
-		URL . 'style.css',
-		['karon'],
-		VERSION
+		"{$prefix}-block",
+		KARON_URL . 'example1/style.css',
+		[],
+		KARON_VERSION
 	);
 
 	// Register Block.
-	register_block_type( NAME, array(
-		'editor_script'   => PLUGIN . '-' . BLOCK . '-block-editor',
-		'editor_style'    => PLUGIN . '-' . BLOCK . '-block-editor',
-		'style'           => PLUGIN . '-' . BLOCK . '-block',
+	register_block_type( 'karon/example1', array(
+		'editor_script'   => "{$prefix}-block-editor",
+		'editor_style'    => "{$prefix}-block-editor",
+		'style'           => "{$prefix}-block",
 		'title'           => 'Karon Example #1',
 		'icon'            => 'carrot',
 		'category'        => 'layout',
@@ -82,8 +74,8 @@ function init() {
 		'render_callback' => function( $attributes = [], $content = '' ) {
 			ob_start();
 			?>
-			<div class="karon-block karon-block-<?php echo esc_attr( BLOCK ); ?>">
-				<p><strong><?php echo esc_html( NAME ); ?></strong></p>
+			<div class="karon-block karon-block-example1">
+				<p><strong>karon/example1</strong></p>
 				<pre><?php print_r( $attributes ); ?></pre>
 			</div>
 			<?php
@@ -91,4 +83,4 @@ function init() {
 		},
 	) );
 }
-add_action( 'init', __NAMESPACE__ . '\init' );
+add_action( 'init', 'karon_example1_block_init' );

@@ -1,8 +1,6 @@
 module.exports = {
 	entry: {
-		'/blocks/example1/block' : './blocks/example1/block.esnext.js',
-		'/blocks/example2/block' : './blocks/example2/block.esnext.js',
-		'/blocks/example3/block' : './blocks/example3/block.esnext.js',
+		'/blocks/example1/block' : './blocks/example1/block.jsx',
 	},
 	output: {
 		path: __dirname,
@@ -11,7 +9,7 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.(js)$/,
+				test: /\.(js|jsx)$/,
 				use: { 
 					loader: "babel-loader",
 				},
