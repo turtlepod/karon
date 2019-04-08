@@ -23,13 +23,13 @@ function init() {
 	wp_register_script(
 		NAME . '-block-editor',
 		URL . 'block.js',
-		array(
+		[
 			'wp-i18n',
 			'wp-blocks',
 			'wp-components',
 			'wp-editor',
 			'wp-element',
-		),
+		],
 		filemtime( PATH . 'block.js' )
 	);
 
@@ -37,9 +37,7 @@ function init() {
 	wp_register_style(
 		NAME . '-block-editor',
 		URL . 'editor.css',
-		array(
-			'wp-blocks',
-		),
+		[],
 		filemtime( PATH . 'editor.css' )
 	);
 
@@ -47,9 +45,7 @@ function init() {
 	wp_register_style(
 		NAME . '-block',
 		URL . 'style.css',
-		array(
-			'wp-blocks',
-		),
+		[],
 		filemtime( PATH . 'style.css' )
 	);
 
