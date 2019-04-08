@@ -12,7 +12,7 @@ function karon_example1_block_init() {
 	// Register Block Editor JS.
 	wp_register_script(
 		"{$prefix}-block-editor",
-		KARON_URL . 'example1/block.js',
+		KARON_URL . 'blocks/example1/block.js',
 		[
 			'wp-i18n',
 			'wp-blocks',
@@ -26,7 +26,7 @@ function karon_example1_block_init() {
 	// Register Block Editor CSS.
 	wp_register_style(
 		"{$prefix}-block-editor",
-		KARON_URL . 'example1/editor.css',
+		KARON_URL . 'blocks/example1/editor.css',
 		[],
 		KARON_VERSION
 	);
@@ -34,7 +34,7 @@ function karon_example1_block_init() {
 	// Register Block Style.
 	wp_register_style(
 		"{$prefix}-block",
-		KARON_URL . 'example1/style.css',
+		KARON_URL . 'blocks/example1/style.css',
 		[],
 		KARON_VERSION
 	);

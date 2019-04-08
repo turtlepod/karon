@@ -110,13 +110,13 @@ registerBlockType( 'karon/example1', {
 							<Fragment>
 								<TextControl
 									type="text"
-									placeholder="Text"
+									placeholder="Text Input"
 									value={ props.attributes.aTextInput }
 									onChange={ ( value ) => props.setAttributes( { aTextInput: value } ) }
 								/>
 								<TextareaControl
 									type="text"
-									placeholder="Text area"
+									placeholder="Text area field"
 									value={ props.attributes.aTextArea }
 									onChange={ ( value ) => props.setAttributes( { aTextArea: value } ) }
 								/>
