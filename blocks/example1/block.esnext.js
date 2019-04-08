@@ -1,7 +1,10 @@
-
+/**
+ * Example Block #1
+ */
 const {
 	__
 } = wp.i18n;
+wp.i18n.setLocaleData({ '': {} }, 'karon');
 
 const {
 	registerBlockType
@@ -34,24 +37,24 @@ registerBlockType( 'karon/example1', {
 				!! props.isSelected && (
 					<InspectorControls>
 						<PanelBody
-							title={ __( 'Block Settings' ) }
+							title={ __( 'Block Settings', 'karon' ) }
 							initialOpen={ false }
 						>
 							<PanelRow>
-								<label>{ __( 'Select Something' ) }</label>
+								<label>{ __( 'Select Something', 'karon' ) }</label>
 								<SelectControl
 									value={ props.attributes.aSelectOption }
 									options={ [
 										{
-											label: 'Red',
+											label: __( 'Red', 'karon' ),
 											value: 'red',
 										},
 										{
-											label: 'Green',
+											label: __( 'Green', 'karon' ),
 											value: 'green',
 										},
 										{
-											label: 'Blue',
+											label: __( 'Blue', 'karon' ),
 											value: 'blue',
 										},
 									] }
@@ -61,16 +64,16 @@ registerBlockType( 'karon/example1', {
 								/>
 							</PanelRow>
 							<PanelRow>
-								<label>{ __( 'Pick Something' ) }</label>
+								<label>{ __( 'Pick Something', 'karon' ) }</label>
 								<RadioControl
 									selected={ props.attributes.aRadioOption }
 									options={ [
 										{
-											label: 'Banana',
+											label: __( 'Banana', 'karon' ),
 											value: 'banana',
 										},
 										{
-											label: 'Apple',
+											label: __( 'Apple', 'karon' ),
 											value: 'apple',
 										},
 									] }
@@ -87,7 +90,7 @@ registerBlockType( 'karon/example1', {
 						<div className="components-toolbar">
 							<IconButton
 								icon={ props.attributes.preview ? 'edit' : 'welcome-view-site' }
-								label={ props.attributes.preview ? __( 'Edit' ) : __( 'Preview' ) }
+								label={ props.attributes.preview ? __( 'Edit', 'karon' ) : __( 'Preview', 'karon' ) }
 								onClick={ ( event ) => {
 									event.stopPropagation();
 									props.setAttributes( { preview: ! props.attributes.preview } );
@@ -110,13 +113,13 @@ registerBlockType( 'karon/example1', {
 							<Fragment>
 								<TextControl
 									type="text"
-									placeholder="Text"
+									placeholder={ __( "Text Input", 'karon' ) }
 									value={ props.attributes.aTextInput }
 									onChange={ ( value ) => props.setAttributes( { aTextInput: value } ) }
 								/>
 								<TextareaControl
 									type="text"
-									placeholder="Text area"
+									placeholder={ __( "Text area field", 'karon' ) }
 									value={ props.attributes.aTextArea }
 									onChange={ ( value ) => props.setAttributes( { aTextArea: value } ) }
 								/>

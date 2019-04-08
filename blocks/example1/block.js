@@ -65,25 +65,15 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__example1__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__example1___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__example1__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__example2__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__example2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__example2__);
-/**
- * Import example blocks
- */
-
-
-
-/***/ }),
-/* 1 */
 /***/ (function(module, exports) {
 
+/**
+ * Example Block #1
+ */
 var __ = wp.i18n.__;
+
+wp.i18n.setLocaleData({ '': {} }, 'karon');
+
 var registerBlockType = wp.blocks.registerBlockType;
 var _wp$editor = wp.editor,
     InspectorControls = _wp$editor.InspectorControls,
@@ -109,7 +99,7 @@ registerBlockType('karon/example1', {
 			wp.element.createElement(
 				PanelBody,
 				{
-					title: __('Block Settings'),
+					title: __('Block Settings', 'karon'),
 					initialOpen: false
 				},
 				wp.element.createElement(
@@ -118,18 +108,18 @@ registerBlockType('karon/example1', {
 					wp.element.createElement(
 						'label',
 						null,
-						__('Select Something')
+						__('Select Something', 'karon')
 					),
 					wp.element.createElement(SelectControl, {
 						value: props.attributes.aSelectOption,
 						options: [{
-							label: 'Red',
+							label: __('Red', 'karon'),
 							value: 'red'
 						}, {
-							label: 'Green',
+							label: __('Green', 'karon'),
 							value: 'green'
 						}, {
-							label: 'Blue',
+							label: __('Blue', 'karon'),
 							value: 'blue'
 						}],
 						onChange: function onChange(value) {
@@ -143,15 +133,15 @@ registerBlockType('karon/example1', {
 					wp.element.createElement(
 						'label',
 						null,
-						__('Pick Something')
+						__('Pick Something', 'karon')
 					),
 					wp.element.createElement(RadioControl, {
 						selected: props.attributes.aRadioOption,
 						options: [{
-							label: 'Banana',
+							label: __('Banana', 'karon'),
 							value: 'banana'
 						}, {
-							label: 'Apple',
+							label: __('Apple', 'karon'),
 							value: 'apple'
 						}],
 						onChange: function onChange(value) {
@@ -171,7 +161,7 @@ registerBlockType('karon/example1', {
 					{ className: 'components-toolbar' },
 					wp.element.createElement(IconButton, {
 						icon: props.attributes.preview ? 'edit' : 'welcome-view-site',
-						label: props.attributes.preview ? __('Edit') : __('Preview'),
+						label: props.attributes.preview ? __('Edit', 'karon') : __('Preview', 'karon'),
 						onClick: function onClick(event) {
 							event.stopPropagation();
 							props.setAttributes({ preview: !props.attributes.preview });
@@ -196,7 +186,7 @@ registerBlockType('karon/example1', {
 					null,
 					wp.element.createElement(TextControl, {
 						type: 'text',
-						placeholder: 'Text',
+						placeholder: __("Text Input", 'karon'),
 						value: props.attributes.aTextInput,
 						onChange: function onChange(value) {
 							return props.setAttributes({ aTextInput: value });
@@ -204,85 +194,10 @@ registerBlockType('karon/example1', {
 					}),
 					wp.element.createElement(TextareaControl, {
 						type: 'text',
-						placeholder: 'Text area',
+						placeholder: __("Text area field", 'karon'),
 						value: props.attributes.aTextArea,
 						onChange: function onChange(value) {
 							return props.setAttributes({ aTextArea: value });
-						}
-					})
-				)
-			)
-		)];
-	},
-	save: function save() {
-		return null;
-	}
-});
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports) {
-
-var __ = wp.i18n.__;
-var registerBlockType = wp.blocks.registerBlockType;
-var _wp$editor = wp.editor,
-    InspectorControls = _wp$editor.InspectorControls,
-    BlockControls = _wp$editor.BlockControls,
-    RichText = _wp$editor.RichText;
-var Fragment = wp.element.Fragment;
-var _wp$components = wp.components,
-    IconButton = _wp$components.IconButton,
-    TextControl = _wp$components.TextControl,
-    TextareaControl = _wp$components.TextareaControl,
-    ServerSideRender = _wp$components.ServerSideRender,
-    PanelBody = _wp$components.PanelBody,
-    PanelRow = _wp$components.PanelRow,
-    RadioControl = _wp$components.RadioControl,
-    SelectControl = _wp$components.SelectControl;
-
-
-registerBlockType('karon/example2', {
-	edit: function edit(props) {
-		return [wp.element.createElement(
-			Fragment,
-			null,
-			wp.element.createElement(
-				BlockControls,
-				null,
-				wp.element.createElement(
-					'div',
-					{ className: 'components-toolbar' },
-					wp.element.createElement(IconButton, {
-						icon: props.attributes.preview ? 'edit' : 'welcome-view-site',
-						label: props.attributes.preview ? __('Edit') : __('Preview'),
-						onClick: function onClick(event) {
-							event.stopPropagation();
-							props.setAttributes({ preview: !props.attributes.preview });
-							event.target.blur();
-						},
-						className: 'components-toolbar__control'
-					})
-				)
-			),
-			props.attributes.preview ? wp.element.createElement(
-				'div',
-				null,
-				wp.element.createElement(ServerSideRender, {
-					block: props.name,
-					attributes: props.attributes
-				})
-			) : wp.element.createElement(
-				'div',
-				null,
-				wp.element.createElement(
-					Fragment,
-					null,
-					wp.element.createElement(TextControl, {
-						type: 'text',
-						placeholder: 'Text',
-						value: props.attributes.typeHere,
-						onChange: function onChange(value) {
-							return props.setAttributes({ typeHere: value });
 						}
 					})
 				)

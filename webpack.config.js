@@ -1,13 +1,15 @@
 module.exports = {
-	entry: './assets/js/blocks.js',
+	entry: {
+		'/blocks/example1/block' : './blocks/example1/block.esnext.js',
+	},
 	output: {
-		path: __dirname + '/assets/js/',
-		filename: 'blocks.build.js',
+		path: __dirname,
+		filename: '[name].js',
 	},
 	module: {
 		rules: [
 			{
-				test: /\.(js)$/,
+				test: /\.(js|jsx)$/,
 				use: { 
 					loader: "babel-loader",
 				},

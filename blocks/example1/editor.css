@@ -1,0 +1,10 @@
+.karon-block {
+	padding: 20px;
+	background: red;
+	color: white;
+	margin-bottom: 20px;
+}
+.karon-block pre {
+	background: red !important;
+	color: white !important;
+}

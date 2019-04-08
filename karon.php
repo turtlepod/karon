@@ -1,108 +1,41 @@
 <?php
 /**
- * Plugin Name: Karon - Simple Blocks Example
- * Author     : turtlepod
-**/
+ * Plugin Name: Karon - Blocks Example
+ * Plugin URI: https://github.com/turtlepod/karon
+ * Description: Various Blocks Example.
+ * Version: 0.1.0
+ * Author: David Chandra Purnama
+ * Author URI: http://shellcreeper.com/
+ * Text Domain: karon
+ * Domain Path: /languages
+ *
+ * This program is free software; you can redistribute it and/or modify it under the terms of the GNU 
+ * General Public License version 2, as published by the Free Software Foundation.  You may NOT assume 
+ * that you can use any other version of the GPL.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without 
+ * even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ *
+ * @author David Chandra Purnama <david@shellcreeper.com>
+ * @license https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+ */
 
-namespace karon;
+// Constants.
+define( 'KARON_URL',      plugin_dir_url( __FILE__ ) );
+define( 'KARON_PATH',     plugin_dir_path( __FILE__ ) );
+define( 'KARON_VERSION',  defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? time() : '0.1.0' );
 
-define( __NAMESPACE__ . '\VERSION', time() );
-define( __NAMESPACE__ . '\PATH', trailingslashit( plugin_dir_path( __FILE__ ) ) );
-define( __NAMESPACE__ . '\URL', trailingslashit( plugin_dir_url( __FILE__ ) ) );
+/**
+ * Bootstrap.
+ * Each block scripts are added separately to make sure we can unregister them separately if needed.
+ *
+ * @since 0.1.0
+ */
+function karon_init() {
+	// Load Languages.
+	load_plugin_textdomain( 'karon', false, basename( KARON_PATH ) . '/languages' );
 
-add_action( 'init', function() {
-
-	// Blocks Assets.
-	add_action( 'enqueue_block_assets', function() {
-		wp_enqueue_script(
-			'karon-blocks',
-			URL . 'assets/js/blocks.build.js',
-			['wp-blocks', 'wp-components', 'wp-element', 'wp-editor' ],
-			VERSION
-		);
-		wp_enqueue_style(
-			'karon-blocks',
-			URL . 'assets/css/editor.css',
-			[],
-			VERSION
-		);
-		// Front end.
-		if ( ! is_admin() ) {
-			wp_enqueue_style(
-				'karon',
-				URL . 'assets/css/style.css',
-				[],
-				VERSION
-			);
-		}
-	} );
-
-	// Register Blocks.
-	register_block_type( 'karon/example1', [
-		'title'       => 'Karon Example #1',
-		'icon'        => 'megaphone',
-		'category'    => 'layout',
-		'description' => 'This is description for Example #1',
-		'attributes'  => [
-			'preview'   => [
-				'type'    => 'bool',
-				'default' => false,
-			],
-			'aTextInput' => [
-				'type'    => 'string',
-				'default' => '',
-			],
-			'aTextArea' => [
-				'type'    => 'string',
-				'default' => '',
-			],
-			'aSelectOption'  => [
-				'type'    => 'string',
-				'default' => 'red',
-			],
-			'aRadioOption'  => [
-				'type'    => 'string',
-				'default' => 'apple',
-			],
-		],
-		'render_callback' => function( $attributes = [], $content = '' ) {
-			ob_start();
-			?>
-			<div class="karon-block karon-block1">
-				<p><strong>karon/example1</strong></p>
-				<p>Attr: <?php echo json_encode( array_map( 'esc_attr', $attributes ) ); ?></p>
-				<p>Content: <?php echo json_encode( $content ); ?></p>
-			</div>
-			<?php
-			return ob_get_clean();
-		},
-	] );
-	register_block_type( 'karon/example2', [
-		'title'       => 'Karon Example #2',
-		'icon'        => 'carrot',
-		'category'    => 'layout',
-		'description' => 'This is description for Example #2',
-		'attributes' => [
-			'preview'   => [
-				'type'    => 'bool',
-				'default' => false,
-			],
-			'typeHere' => [
-				'type'    => 'string',
-				'default' => '',
-			],
-		],
-		'render_callback' => function( $attributes = [], $content = '' ) {
-			ob_start();
-			?>
-			<div class="karon-block karon-block2">
-				<p><strong>karon/example2</strong></p>
-				<p>Attr: <?php echo json_encode( array_map( 'esc_attr', $attributes ) ); ?></p>
-				<p>Content: <?php echo json_encode( $content ); ?></p>
-			</div>
-			<?php
-			return ob_get_clean();
-		},
-	] );
-
-} );
+	// Load Blocks.
+	require_once( KARON_PATH . 'blocks/example1.php' );
+}
+add_action( 'plugins_loaded', 'karon_init' );
