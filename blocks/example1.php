@@ -1,27 +1,25 @@
 <?php
 /**
  * Block Example #1
- *
- * Register client-side assets (scripts and stylesheets) for WP block.
- */
+**/
 
 namespace karon\example1;
 
-// Constants
-define( __NAMESPACE__ . '\NAME', 'example1' );
-define( __NAMESPACE__ . '\PATH', trailingslashit( trailingslashit( plugin_dir_path( __FILE__ ) ) . NAME ) );
-define( __NAMESPACE__ . '\URL', trailingslashit( trailingslashit( plugin_dir_url( __FILE__ ) ) . NAME ) );
+// Constants.
+define( __NAMESPACE__ . '\VERSION',  KARON_VERSION );
+define( __NAMESPACE__ . '\PLUGIN',   'karon' );
+define( __NAMESPACE__ . '\BLOCK',    'example1' );
+define( __NAMESPACE__ . '\NAME',     PLUGIN . '/' . BLOCK  );
+define( __NAMESPACE__ . '\PATH',     plugin_dir_path( __FILE__ ) . BLOCK . '/' );
+define( __NAMESPACE__ . '\URL',      plugin_dir_url( __FILE__ ) . BLOCK . '/' );
 
 /**
- * Registers all block assets so that they can be enqueued through Gutenberg in
- * the corresponding context.
- *
- * @see https://wordpress.org/gutenberg/handbook/blocks/writing-your-first-block-type/#enqueuing-block-scripts
+ * Registers block assets.
  */
 function init() {
 	// Register Block Editor JS.
 	wp_register_script(
-		NAME . '-block-editor',
+		PLUGIN . '-' . BLOCK . '-block-editor',
 		URL . 'block.js',
 		[
 			'wp-i18n',
@@ -30,64 +28,62 @@ function init() {
 			'wp-editor',
 			'wp-element',
 		],
-		filemtime( PATH . 'block.js' )
+		VERSION
 	);
 
 	// Register Block Editor CSS.
 	wp_register_style(
-		NAME . '-block-editor',
+		PLUGIN . '-' . BLOCK . '-block-editor',
 		URL . 'editor.css',
-		[],
-		filemtime( PATH . 'editor.css' )
+		['karon'],
+		VERSION
 	);
 
 	// Register Block Style.
 	wp_register_style(
-		NAME . '-block',
+		PLUGIN . '-' . BLOCK . '-block',
 		URL . 'style.css',
-		[],
-		filemtime( PATH . 'style.css' )
+		['karon'],
+		VERSION
 	);
 
 	// Register Block.
-	register_block_type( 'karon/' . NAME, array(
-		'editor_script' => NAME . '-block-editor',
-		'editor_style'  => NAME . '-block-editor',
-		'style'         => NAME . '-block',
-
-		'title'       => 'Karon Example #1',
-		'icon'        => 'megaphone',
-		'category'    => 'layout',
-		'description' => 'This is description for Example #1',
-		'attributes'  => [
-			'preview'   => [
-				'type'    => 'bool',
+	register_block_type( NAME, array(
+		'editor_script'   => PLUGIN . '-' . BLOCK . '-block-editor',
+		'editor_style'    => PLUGIN . '-' . BLOCK . '-block-editor',
+		'style'           => PLUGIN . '-' . BLOCK . '-block',
+		'title'           => 'Karon Example #1',
+		'icon'            => 'megaphone',
+		'category'        => 'layout',
+		'description'     => 'This is description for Example #1',
+		'attributes'      => [
+			'preview' => [
+				'type' => 'bool',
 				'default' => false,
 			],
 			'aTextInput' => [
-				'type'    => 'string',
+				'type' => 'string',
 				'default' => '',
 			],
 			'aTextArea' => [
-				'type'    => 'string',
+				'type' => 'string',
 				'default' => '',
 			],
-			'aSelectOption'  => [
-				'type'    => 'string',
+			'aSelectOption' => [
+				'type' => 'string',
 				'default' => 'red',
 			],
-			'aRadioOption'  => [
-				'type'    => 'string',
+			'aRadioOption' => [
+				'type' => 'string',
 				'default' => 'apple',
 			],
 		],
 		'render_callback' => function( $attributes = [], $content = '' ) {
 			ob_start();
 			?>
-			<div class="karon-block karon-block1">
-				<p><strong>karon/example1</strong></p>
-				<p>Attr: <?php echo json_encode( array_map( 'esc_attr', $attributes ) ); ?></p>
-				<p>Content: <?php echo json_encode( $content ); ?></p>
+			<div class="karon-block karon-block-<?php echo esc_attr( BLOCK ); ?>">
+				<p><strong><?php echo esc_html( NAME ); ?></strong></p>
+				<pre><?php print_r( $attributes ); ?></pre>
 			</div>
 			<?php
 			return ob_get_clean();

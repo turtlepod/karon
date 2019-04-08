@@ -18,15 +18,39 @@
  * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
 
+// Constants.
+define( 'KARON_PATH',     plugin_dir_path( __FILE__ ) );
+define( 'KARON_URL',      plugin_dir_url( __FILE__ ) );
+define( 'KARON_VERSION',  defined( 'WP_DEBUG' ) && WP_DEBUG ? time() : '0.1.0' );
+
 /**
  * Bootstrap.
  * Each block scripts are added separately to make sure we can unregister them separately if needed.
  *
  * @since 0.1.0
  */
-add_action( 'plugins_loaded', function() {
-	$path = trailingslashit( plugin_dir_path( __FILE__ ) );
-	require_once( $path . 'blocks/example1.php' );
-	require_once( $path . 'blocks/example2.php' );
-	require_once( $path . 'blocks/example3.php' );
-} );
+function karon_init() {
+	// Register Global Scripts
+	add_action( 'wp_enqueue_scripts', 'karon_scripts' );
+	add_action( 'admin_enqueue_scripts', 'karon_scripts' );
+
+	// Load Blocks.
+	require_once( KARON_PATH . 'blocks/example1.php' );
+	//require_once( KARON_PATH . 'blocks/example2.php' );
+	//require_once( KARON_PATH . 'blocks/example3.php' );
+}
+add_action( 'plugins_loaded', 'karon_init' );
+
+/**
+ * Karon Scripts
+ *
+ * @since 0.1.0
+ */
+function karon_scripts() {
+	wp_register_style(
+		'karon',
+		KARON_URL . 'assets/karon.css',
+		[],
+		KARON_VERSION
+	);
+}
