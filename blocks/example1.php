@@ -40,7 +40,7 @@ function karon_example1_block_init() {
 	);
 
 	// Register Block.
-	register_block_type( 'karon/example1', array(
+	register_block_type( 'karon/example1',[
 		'editor_script'   => "{$prefix}-block-editor",
 		'editor_style'    => "{$prefix}-block-editor",
 		'style'           => "{$prefix}-block",
@@ -81,6 +81,6 @@ function karon_example1_block_init() {
 			<?php
 			return ob_get_clean();
 		},
-	) );
+	] );
 }
 add_action( 'init', 'karon_example1_block_init' );
