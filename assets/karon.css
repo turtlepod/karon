@@ -5,6 +5,6 @@
 	margin-bottom: 20px;
 }
 .karon-block pre {
-	background: black;
-	color: white;
+	background: black !important;
+	color: white !important;
 }

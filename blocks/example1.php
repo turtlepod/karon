@@ -53,8 +53,9 @@ function init() {
 		'editor_style'    => PLUGIN . '-' . BLOCK . '-block-editor',
 		'style'           => PLUGIN . '-' . BLOCK . '-block',
 		'title'           => 'Karon Example #1',
-		'icon'            => 'megaphone',
+		'icon'            => 'carrot',
 		'category'        => 'layout',
+		'keywords'        => ['qwerty', 'asdf'],
 		'description'     => 'This is description for Example #1',
 		'attributes'      => [
 			'preview' => [

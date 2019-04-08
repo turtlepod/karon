@@ -19,9 +19,9 @@
  */
 
 // Constants.
-define( 'KARON_PATH',     plugin_dir_path( __FILE__ ) );
 define( 'KARON_URL',      plugin_dir_url( __FILE__ ) );
-define( 'KARON_VERSION',  defined( 'WP_DEBUG' ) && WP_DEBUG ? time() : '0.1.0' );
+define( 'KARON_PATH',     plugin_dir_path( __FILE__ ) );
+define( 'KARON_VERSION',  defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? time() : '0.1.0' );
 
 /**
  * Bootstrap.
