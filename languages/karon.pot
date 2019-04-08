@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Karon\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-09 00:21+0700\n"
+"POT-Creation-Date: 2019-04-09 00:31+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: dave <david.warna@gmail.com>\n"
 "Language-Team: David Chandra P. <david@shellcreeper.com>\n"
@@ -33,50 +33,50 @@ msgstr ""
 msgid "This is description for Example #1"
 msgstr ""
 
-#: blocks/example1/block.esnext.js:39 blocks/example1/block.js:99
+#: blocks/example1/block.esnext.js:40 blocks/example1/block.js:102
 msgid "Block Settings"
 msgstr ""
 
-#: blocks/example1/block.esnext.js:43 blocks/example1/block.js:108
+#: blocks/example1/block.esnext.js:44 blocks/example1/block.js:111
 msgid "Select Something"
 msgstr ""
 
-#: blocks/example1/block.esnext.js:48 blocks/example1/block.js:113
+#: blocks/example1/block.esnext.js:49 blocks/example1/block.js:116
 msgid "Red"
 msgstr ""
 
-#: blocks/example1/block.esnext.js:52 blocks/example1/block.js:116
+#: blocks/example1/block.esnext.js:53 blocks/example1/block.js:119
 msgid "Green"
 msgstr ""
 
-#: blocks/example1/block.esnext.js:56 blocks/example1/block.js:119
+#: blocks/example1/block.esnext.js:57 blocks/example1/block.js:122
 msgid "Blue"
 msgstr ""
 
-#: blocks/example1/block.esnext.js:66 blocks/example1/block.js:133
+#: blocks/example1/block.esnext.js:67 blocks/example1/block.js:136
 msgid "Pick Something"
 msgstr ""
 
-#: blocks/example1/block.esnext.js:71 blocks/example1/block.js:138
+#: blocks/example1/block.esnext.js:72 blocks/example1/block.js:141
 msgid "Banana"
 msgstr ""
 
-#: blocks/example1/block.esnext.js:75 blocks/example1/block.js:141
+#: blocks/example1/block.esnext.js:76 blocks/example1/block.js:144
 msgid "Apple"
 msgstr ""
 
-#: blocks/example1/block.esnext.js:92 blocks/example1/block.js:161
+#: blocks/example1/block.esnext.js:93 blocks/example1/block.js:164
 msgid "Edit"
 msgstr ""
 
-#: blocks/example1/block.esnext.js:92 blocks/example1/block.js:161
+#: blocks/example1/block.esnext.js:93 blocks/example1/block.js:164
 msgid "Preview"
 msgstr ""
 
-#: blocks/example1/block.esnext.js:115 blocks/example1/block.js:186
+#: blocks/example1/block.esnext.js:116 blocks/example1/block.js:189
 msgid "Text Input"
 msgstr ""
 
-#: blocks/example1/block.esnext.js:121 blocks/example1/block.js:194
+#: blocks/example1/block.esnext.js:122 blocks/example1/block.js:197
 msgid "Text area field"
 msgstr ""

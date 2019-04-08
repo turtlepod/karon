@@ -23,6 +23,7 @@ function karon_example1_block_init() {
 		KARON_VERSION
 	);
 
+
 	// Register Block Editor CSS.
 	wp_register_style(
 		"{$prefix}-block-editor",
@@ -82,6 +83,7 @@ function karon_example1_block_init() {
 			return ob_get_clean();
 		},
 	] );
-	wp_set_script_translations( "{$prefix}-block-editor", 'karon' );
+
+	wp_set_script_translations( "{$prefix}-block-editor", 'karon', KARON_PATH . 'languages' );
 }
 add_action( 'init', 'karon_example1_block_init' );
