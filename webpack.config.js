@@ -1,6 +1,6 @@
 module.exports = {
 	entry: {
-		'/blocks/example1/block' : './blocks/example1/block.jsx',
+		'/blocks/example1/block' : './blocks/example1/block.esnext.js',
 	},
 	output: {
 		path: __dirname,

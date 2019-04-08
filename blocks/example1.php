@@ -44,11 +44,11 @@ function karon_example1_block_init() {
 		'editor_script'   => "{$prefix}-block-editor",
 		'editor_style'    => "{$prefix}-block-editor",
 		'style'           => "{$prefix}-block",
-		'title'           => 'Karon Example #1',
+		'title'           => esc_html__( 'Karon Example #1', 'karon' ),
 		'icon'            => 'carrot',
 		'category'        => 'layout',
-		'keywords'        => ['qwerty', 'asdf'],
-		'description'     => 'This is description for Example #1',
+		'keywords'        => [ esc_html__( 'qwerty', 'karon' ), esc_html__( 'asdf', 'karon' ) ],
+		'description'     => esc_html__( 'This is description for Example #1', 'karon' ),
 		'attributes'      => [
 			'preview' => [
 				'type' => 'bool',
@@ -82,5 +82,6 @@ function karon_example1_block_init() {
 			return ob_get_clean();
 		},
 	] );
+	wp_set_script_translations( "{$prefix}-block-editor", 'karon' );
 }
 add_action( 'init', 'karon_example1_block_init' );
